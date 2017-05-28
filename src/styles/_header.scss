@@ -1,0 +1,21 @@
+.header {
+  color: $text-light;
+  background: $black;
+
+  &__wrap {
+    display: flex;
+  }
+
+  &__logo {
+    flex: 0 1 auto;
+    margin-right: 10%;
+    width: 100px;
+    height: 100px;
+    background: red;
+  }
+
+  &__navbar {
+    flex: 0 1 auto;
+    background: lightgreen;
+  }
+}

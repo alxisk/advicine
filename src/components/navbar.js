@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Navbar = () => (
-  <nav className="navbar">
+  <nav className="navbar header__navbar">
     <ul>
       <li className="navbar__list-item">Home</li>
       <li className="navbar__list-item">About</li>

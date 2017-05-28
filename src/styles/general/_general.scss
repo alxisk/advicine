@@ -1,0 +1,26 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.wrap {
+  margin: 0 auto;
+  width: 80%;
+
+  @media #{$mq-sm} {
+    width: 90%;
+  }
+}
