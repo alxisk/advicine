@@ -7,13 +7,26 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  background: $light;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 ul {
   padding-left: 0;
   list-style: none;
+}
+
+input[type="text"] {
+  
 }
 
 .wrap {
