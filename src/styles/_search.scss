@@ -1,0 +1,20 @@
+.search {
+  &__wrap {
+    text-align: center;
+  }
+
+  &__input {
+    padding: 10px 10px;
+    width: 200px;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    border-bottom: 2px solid $dark;
+    transition: width 0.6s ease, border 0.8s ease;
+
+    &:focus {
+      width: 100%;
+      border-bottom: 2px solid $main;
+    }
+  }
+}

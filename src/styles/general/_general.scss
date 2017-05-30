@@ -25,9 +25,22 @@ ul {
   list-style: none;
 }
 
-input[type="text"] {
-  
+input {
+  color: $text-dark;
+  background: $light;
+  border: none;
+  outline: none;
 }
+
+::-webkit-input-placeholder { color: $text-dark; }
+::-moz-placeholder          { color: $text-dark; }
+:-ms-input-placeholder      { color: $text-dark; }
+input:-moz-placeholder      { color: $text-dark; }
+
+input:focus::-webkit-input-placeholder { color: transparent; }
+input:focus::-moz-placeholder          { color: transparent; }
+input:focus:-ms-input-placeholder      { color: transparent; }
+input:focus:-moz-placeholder           { color: transparent; }
 
 .wrap {
   margin: 0 auto;
