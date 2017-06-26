@@ -1,5 +1,5 @@
 const tmdbApi = {
-  key: '5d974471b2e6b4bf9f03e0c32040eeb',
+  key: '5d974471b2e6b4bf9f03e0c32040eebc',
 
   getTitles(query) {
     query = encodeURIComponent(query);
