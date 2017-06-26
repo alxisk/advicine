@@ -9,10 +9,18 @@
   }
 
   &__logo {
+    padding-left: 15px;
+    padding-right: 15px;
     flex: 0 1 auto;
-    width: 120px;
-    height: 50px;
+    font-family: $caviar;
+    font-size: 26px;
+    line-height: 26px;
     background: $main;
+
+    & > p {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
   }
 
   &__navbar {
