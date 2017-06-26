@@ -6,7 +6,8 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'main.js'
+    filename: 'main.js',
+    publicPath: '/'
   },
 
   module: {
@@ -79,6 +80,7 @@ const config = {
   ],
 
   devServer: {
+    historyApiFallback: true,
     contentBase: path.join(__dirname, "build"),
     compress: true,
     port: 8080

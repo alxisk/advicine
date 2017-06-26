@@ -9,6 +9,8 @@
   }
 
   &__logo {
+    padding-top: 15px;
+    padding-bottom: 15px;
     padding-left: 15px;
     padding-right: 15px;
     flex: 0 1 auto;
@@ -16,11 +18,6 @@
     font-size: 26px;
     line-height: 26px;
     background: $main;
-
-    & > p {
-      margin-top: 15px;
-      margin-bottom: 15px;
-    }
   }
 
   &__navbar {
