@@ -45,7 +45,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 Search.propTypes = {
-  onSubmit: PropTypes.func.isRequired
-}
+  onSubmit: PropTypes.func.isRequired,
+  history: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object
+  ]).isRequired
+};
 
 export default withRouter(connect(null, mapDispatchToProps)(Search));
