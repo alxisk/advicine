@@ -1,26 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-const SearchItem = ({ title }) => (
-  <li >
-    {console.log(title)}
-    {title.poster_path ?
-      <img
-        src={`https://image.tmdb.org/t/p/w92${title.poster_path}`}
-        alt={`${title.original_title} poster`}
-      /> :
-      <div style={{ width: '92px', height: '120px', background: 'lime' }} /> //*change in styles
-    }
-    <h2>{title.original_title}</h2>
-    <p>({parseInt(title.release_date)})</p>
-    <p>Rating: {title.vote_average}</p>
-  </li>
-);
+import SearchItem from './searchItem';
 
 const SearchResults = ({ searchResults }) => (
   <section>
-    {console.log(searchResults)}
+    {console.log('searchResults:', searchResults)}
     <ul>
       {searchResults.length ?
         searchResults.map(item => <SearchItem key={item.id} title={item} />) :
