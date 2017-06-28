@@ -25,13 +25,4 @@ SearchResults.propTypes = {
   searchResults: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
-SearchItem.propTypes = {
-  title: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object,
-    PropTypes.array
-  ]).isRequired
-};
-
 export default connect(mapStateToProps)(SearchResults);

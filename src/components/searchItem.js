@@ -1,13 +1,11 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { addTitle } from '../actions/titlesActions';
+import PropTypes from 'prop-types';
 
-const SearchItem = ({ title, addTitle }) => (
-  <li onClick={() => addTitle(title)}>
+const SearchItem = ({ title }) => (
+  <li>
     {console.log('searchItem:', title)}
-    <NavLink to={`/titles/${title.original_title}`}>
+    <NavLink to={`/titles/${title.id}-${title.original_title}`}>
       {title.poster_path ?
         <img
           src={`https://image.tmdb.org/t/p/w92${title.poster_path}`}
@@ -22,10 +20,13 @@ const SearchItem = ({ title, addTitle }) => (
   </li>
 );
 
-function mapDispatchToProps(dispatch) {
-  return {
-    addTitle: bindActionCreators(addTitle, dispatch)
-  }
-}
+SearchItem.propTypes = {
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+    PropTypes.array
+  ]).isRequired
+};
 
-export default connect(null, mapDispatchToProps)(SearchItem);
+export default SearchItem;
