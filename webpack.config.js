@@ -19,7 +19,8 @@ const config = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['react', 'es2015', 'env']
+              presets: ['react', 'es2015', 'env'],
+              plugins: [require('babel-plugin-transform-object-rest-spread')]
             }
           },
           {
