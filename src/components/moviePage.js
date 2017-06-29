@@ -8,20 +8,19 @@ class MoviePage extends Component {
   componentDidMount() {
     const titleId = parseInt(this.props.match.params.title);
     this.props.fetchTitleData(titleId);
-    console.log(titleId);
   }
 
   render() {
     const movie = this.props.movie;
-    console.log('Movie:', movie);
-    if (!movie || movie.isFetching) {
+    console.log('MoviePage:', movie);
+    if (!movie.hasOwnProperty('isFetching') || movie.isFetching) {
       return (
         <h1>Loading..</h1>
       );
     }
     return (
       <section className="movie-page">
-        {console.log('MoviePage:', this.props)}
+        {console.count()}
         <div className="movie-page__poster">
           <img
             src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
@@ -58,13 +57,13 @@ class MoviePage extends Component {
 
 function mapStateToProps(state, ownProps) {
   return {
-    movie: state.titles[parseInt(ownProps.match.params.title)]
+    movie: state.titles[parseInt(ownProps.match.params.title)] || {},
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    fetchTitleData: bindActionCreators(fetchTitleData, dispatch)
+    fetchTitleData: bindActionCreators(fetchTitleData, dispatch),
   };
 }
 
@@ -73,14 +72,15 @@ MoviePage.propTypes = {
   match: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.string,
-    PropTypes.object
+    PropTypes.object,
   ]).isRequired,
   movie: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.number,
     PropTypes.string,
-    PropTypes.array
-  ])
+    PropTypes.array,
+    PropTypes.object,
+  ]).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

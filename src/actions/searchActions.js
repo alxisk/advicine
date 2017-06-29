@@ -4,14 +4,14 @@ import tmdbApi from '../utils/tmdbApi';
 export function requestSearchResults() {
   return {
     type: actionTypes.REQUEST_SEARCH_RESULTS,
-    isFetching: true
+    isFetching: true,
   };
 }
 
 export function recieveSearchResults(results) {
   return {
     type: actionTypes.RECIEVE_SEARCH_RESULTS,
-    results
+    results,
   };
 }
 

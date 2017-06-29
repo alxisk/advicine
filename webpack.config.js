@@ -84,7 +84,8 @@ const config = {
     historyApiFallback: true,
     contentBase: path.join(__dirname, "build"),
     compress: true,
-    port: 8080
+    port: 8080,
+    stats: 'minimal'
   }
 }
 

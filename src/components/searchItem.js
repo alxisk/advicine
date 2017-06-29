@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 const SearchItem = ({ title }) => (
   <li>
-    {console.log('searchItem:', title)}
     <NavLink to={`/titles/${title.id}-${title.original_title}`}>
       {title.poster_path ?
         <img
@@ -25,8 +24,8 @@ SearchItem.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.object,
-    PropTypes.array
-  ]).isRequired
+    PropTypes.array,
+  ]).isRequired,
 };
 
 export default SearchItem;

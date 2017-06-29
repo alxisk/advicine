@@ -5,7 +5,6 @@ import SearchItem from './searchItem';
 
 const SearchResults = ({ searchResults }) => (
   <section>
-    {console.log('searchResults:', searchResults)}
     <ul>
       {searchResults.length ?
         searchResults.map(item => <SearchItem key={item.id} title={item} />) :
@@ -17,12 +16,12 @@ const SearchResults = ({ searchResults }) => (
 
 function mapStateToProps(state) {
   return {
-    searchResults: state.searchResults.results || []
+    searchResults: state.searchResults.results || [],
   };
 }
 
 SearchResults.propTypes = {
-  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired
+  searchResults: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps)(SearchResults);

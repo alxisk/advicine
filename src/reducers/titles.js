@@ -5,7 +5,7 @@ export default function titles(state = {}, action) {
     case actionTypes.REQUEST_TITLE_DATA:
       return {
         ...state,
-        [action.id]: { isFetching: true }
+        [action.id]: { isFetching: true },
       };
     case actionTypes.RECIEVE_TITLE_DATA:
       return {
@@ -13,8 +13,8 @@ export default function titles(state = {}, action) {
         [action.id]: {
           ...action.details,
           isFetching: false,
-          videos: action.videos
-        }
+          videos: action.videos,
+        },
       };
     default:
       return state;

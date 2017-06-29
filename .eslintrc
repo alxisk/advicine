@@ -7,7 +7,10 @@
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "comma-dangle": ["error", "never"],
-    "no-param-reassign": "off"
+    "no-param-reassign": [2, { "props": false }],
+    "comma-dangle": [2, "always-multiline"],
+    "no-console": [1, { "allow": ["warn", "error"] }],
+    "no-prototype-builtins": 0,
+    "radix": [2, "as-needed"],
   }
 }

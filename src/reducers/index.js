@@ -4,5 +4,5 @@ import titles from './titles';
 
 export default combineReducers({
   searchResults,
-  titles
+  titles,
 });

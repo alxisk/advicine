@@ -4,7 +4,7 @@ import tmdbApi from '../utils/tmdbApi';
 export function requestTitleData(id) {
   return {
     type: actionTypes.REQUEST_TITLE_DATA,
-    id
+    id,
   };
 }
 
@@ -13,7 +13,7 @@ export function recieveTitleData(id, details, videos) {
     type: actionTypes.RECIEVE_TITLE_DATA,
     id,
     details,
-    videos
+    videos,
   };
 }
 

@@ -22,7 +22,6 @@ class Search extends Component {
   render() {
     return (
       <div className="search">
-        {console.log(this.props)}
         <div className="wrap search__wrap">
           <form onSubmit={this.handleSubmit}>
             <input
@@ -40,7 +39,7 @@ class Search extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmit: bindActionCreators(fetchSearchResults, dispatch)
+    onSubmit: bindActionCreators(fetchSearchResults, dispatch),
   };
 }
 
@@ -49,8 +48,8 @@ Search.propTypes = {
   history: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.object
-  ]).isRequired
+    PropTypes.object,
+  ]).isRequired,
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(Search));
