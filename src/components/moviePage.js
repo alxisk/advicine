@@ -12,7 +12,6 @@ class MoviePage extends Component {
 
   render() {
     const movie = this.props.movie;
-    console.log('MoviePage:', movie);
     if (!movie.hasOwnProperty('isFetching') || movie.isFetching) {
       return (
         <h1>Loading..</h1>
@@ -20,7 +19,6 @@ class MoviePage extends Component {
     }
     return (
       <section className="movie-page">
-        {console.count()}
         <div className="movie-page__poster">
           <img
             src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
