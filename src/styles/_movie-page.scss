@@ -1,0 +1,58 @@
+.movie-page {
+  font-family: $roboto;
+  font-size: 16px;
+  line-height: 24px;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: lighten($light, 30%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  &__poster {
+    flex: 0 1 auto;
+  }
+
+  &__description {
+    flex: 0 1 70%;
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  &__title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 26px;
+    line-height: 26px;
+    letter-spacing: 1px;
+  }
+
+  &__release-date {
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  &__overview {
+    margin-bottom: 0;
+    text-indent: 20px;
+  }
+
+  &__info {
+    flex: 0 1 20%;
+  }
+
+  &__info-item {
+    margin-top: 0;
+
+    & > span {
+      display: block;
+      font-weight: 600;
+    }
+  }
+}

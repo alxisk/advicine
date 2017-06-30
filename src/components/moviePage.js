@@ -19,34 +19,36 @@ class MoviePage extends Component {
     }
     return (
       <section className="movie-page">
-        <div className="movie-page__poster">
-          <img
-            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-            alt={`${movie.title} poster`}
-          />
-        </div>
-        <div className="movie-page__description">
-          <h2 className="movie-page__title">{movie.title}</h2>
-          <p className="movie-page__release-date">({parseInt(movie.release_date)})</p>
-          <p className="movie-page__overview">{movie.overview}</p>
-        </div>
-        <div className="movie-page__info">
-          <p className="movie-page__info-item">
-            <span>Runtime</span>
-            {movie.runtime}m
-          </p>
-          <p className="movie-page__info-item">
-            <span>Original language</span>
-            {movie.original_language}
-          </p>
-          <p className="movie-page__info-item">
-            <span>Budget</span>
-            {movie.budget}$
-          </p>
-          <p className="movie-page__info-item">
-            <span>Revenue</span>
-            {movie.revenue}$
-          </p>
+        <div className="wrap movie-page__wrap">
+          <div className="movie-page__poster">
+            <img
+              src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+              alt={`${movie.title} poster`}
+            />
+          </div>
+          <div className="movie-page__description">
+            <h2 className="movie-page__title">{movie.title}</h2>
+            <p className="movie-page__release-date">({parseInt(movie.release_date)})</p>
+            <p className="movie-page__overview">{movie.overview}</p>
+          </div>
+          <div className="movie-page__info">
+            <p className="movie-page__info-item">
+              <span>Runtime</span>
+              {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}
+            </p>
+            <p className="movie-page__info-item">
+              <span>Original language</span>
+              {movie.original_language}
+            </p>
+            <p className="movie-page__info-item">
+              <span>Budget</span>
+              {movie.budget}$
+            </p>
+            <p className="movie-page__info-item">
+              <span>Revenue</span>
+              {movie.revenue}$
+            </p>
+          </div>
         </div>
       </section>
     );
