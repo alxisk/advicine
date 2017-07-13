@@ -1,0 +1,60 @@
+.currentMovies {
+  font-family: $roboto;
+
+  &__block {
+    margin-bottom: 40px;
+  }
+
+  &__block-name {
+    font-size: 28px;
+    line-height: 32px;
+    color: $text-dark;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex: 0 1 25%;
+  }
+
+  &__link {
+    position: relative;
+    display: block;
+    padding-top: 137%;
+    color: $text-light;
+    text-shadow: 0 0 1px $text-dark;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  &__link:hover &__overlay {
+    opacity: 1;
+  }
+
+  &__overlay {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  &__title {
+    flex: 0 1 auto;
+    font-size: 28px;
+    line-height: 32px;
+  }
+}
