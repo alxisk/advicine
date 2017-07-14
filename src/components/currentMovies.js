@@ -8,14 +8,14 @@ import { fetchCurrentMovies } from '../actions/collectionsActions';
 const CurrentMoviesItem = ({ id, title, name, poster_path }) => {
   const movieTitle = title || name;
   return (
-    <li className="currentMovies__item">
+    <li className="current-movies__item">
       <Link
         to={`/titles/${id}-${movieTitle}`}
-        className="currentMovies__link"
+        className="current-movies__link"
         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${poster_path})` }} // eslint-disable-line camelcase
       >
-        <div className="currentMovies__overlay">
-          <p className="currentMovies__title">{movieTitle}</p>
+        <div className="current-movies__overlay">
+          <p className="current-movies__title">{movieTitle}</p>
         </div>
       </Link>
     </li>
@@ -40,19 +40,19 @@ class CurrentMovies extends Component {
     const latestTVShows = this.props.currentMovies.latestTVShows;
 
     return (
-      <section className="currentMovies">
+      <section className="current-movies">
         <div className="wrap">
-          <div className="currentMovies__block">
-            <h2 className="currentMovies__block-name">Upcoming Movies</h2>
-            <ul className="currentMovies__list">
+          <div className="current-movies__block">
+            <h2 className="current-movies__block-name">Upcoming Movies</h2>
+            <ul className="current-movies__list">
               {upcomingMovies.slice(0, 8).map(
                 item => <CurrentMoviesItem key={item.id} {...item} />
               )}
             </ul>
           </div>
-          <div className="currentMovies__block">
-            <h2 className="currentMovies__block-name">Latest TV Shows</h2>
-            <ul className="currentMovies__list">
+          <div className="current-movies__block">
+            <h2 className="current-movies__block-name">Latest TV Shows</h2>
+            <ul className="current-movies__list">
               {latestTVShows.slice(0, 8).map(
                 item => <CurrentMoviesItem key={item.id} {...item} />
               )}
