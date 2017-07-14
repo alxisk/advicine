@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchCurrentMovies } from '../actions/currentMoviesActions';
+import { fetchCurrentMovies } from '../actions/collectionsActions';
 
 const CurrentMoviesItem = ({ id, title, name, poster_path }) => {
   const movieTitle = title || name;
@@ -66,7 +66,7 @@ class CurrentMovies extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentMovies: state.currentMovies,
+    currentMovies: state.collections.currentMovies,
   };
 }
 
