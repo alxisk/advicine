@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import Header from './header';
 import Search from './search';
 import CurrentMovies from './currentMovies';
+import BestMovies from './bestMovies';
 import SearchResults from './searchResults';
 import MoviePage from './moviePage';
 
@@ -12,6 +13,7 @@ const App = () => (
     <Search />
     <Route exact path="/" component={CurrentMovies} />
     <Route path="/search" component={SearchResults} />
+    <Route path="/best-movies" component={BestMovies} />
     <Route path="/titles/:title" component={MoviePage} />
   </div>
 );

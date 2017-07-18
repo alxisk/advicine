@@ -36,6 +36,13 @@ const tmdbApi = {
             error => console.error(error))
       .then(response => response.results);
   },
+
+  getBestMovies(page) {
+    return fetch(`${this.baseUrl}movie/top_rated?${this.key}&language=en-US&page=${page}`)
+      .then(response => response.json(),
+            error => console.error(error))
+      .then(response => response.results);
+  },
 };
 
 export default tmdbApi;

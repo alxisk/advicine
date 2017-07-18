@@ -24,3 +24,25 @@ export const fetchCurrentMovies = () => (dispatch) => {
       responses => dispatch(recieveCurrentMovies(responses[0], responses[1]))
     );
 };
+
+export function requestBestMovies() {
+  return {
+    type: actionTypes.REQUEST_BEST_MOVIES,
+  };
+}
+
+export function recieveBestMovies(bestMovies, scrollPosition) {
+  return {
+    type: actionTypes.RECIEVE_BEST_MOVIES,
+    bestMovies,
+    scrollPosition,
+  };
+}
+
+export const fetchBestMovies = (page, scrollPosition) => (dispatch) => {
+  dispatch(requestBestMovies());
+  return tmdbApi.getBestMovies(page)
+    .then(
+      response => dispatch(recieveBestMovies(response, scrollPosition))
+    );
+};
