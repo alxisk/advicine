@@ -10,6 +10,17 @@ const tmdbApi = {
       .then(json => json.results);
   },
 
+  getAdvSearchResults(date, genres, lang, runtime) {
+    const dateStr = getDateStr(date);
+    const runtimeStr = getRuntimeStr(runtime);
+    const genreStr = getGenreStr(genres);
+
+    return fetch(`${this.baseUrl}discover/movie?${this.key}&language=en-US&${dateStr}&${runtimeStr}&${genreStr}&with_original_language=${lang}`)
+      .then(response => response.json(),
+            error => console.error(error))
+      .then(json => json.results);
+  },
+
   getDetails(titleId) {
     return fetch(`${this.baseUrl}movie/${titleId}?${this.key}&language=en-US`)
       .then(response => response.json(),
@@ -44,5 +55,17 @@ const tmdbApi = {
       .then(response => response.results);
   },
 };
+
+function getDateStr(date) {
+  return `release_date.gte=${date.dateMin}&release_date.lte=${date.dateMin}`;
+}
+
+function getRuntimeStr(runtime) {
+  return `with_runtime.gte=${runtime.runtimeMin}&with_runtime.lte=${runtime.runtimeMax}`;
+}
+
+function getGenreStr(genres) {
+  return `with_genres=${encodeURIComponent(genres.toString())}`;
+}
 
 export default tmdbApi;

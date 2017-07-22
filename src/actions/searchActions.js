@@ -22,3 +22,25 @@ export const fetchSearchResults = query => (dispatch) => {
       json => dispatch(recieveSearchResults(json))
     );
 };
+
+export function requestAdvancedSearchResults() {
+  return {
+    type: actionTypes.REQUEST_ADVANCED_SEARCH_RESULTS,
+    isFetching: true,
+  };
+}
+
+export function recieveAdvancedSearchResults(results) {
+  return {
+    type: actionTypes.RECIEVE_ADVANCED_SEARCH_RESULTS,
+    results,
+  };
+}
+
+export const fetchAdvancedSearchResults = (date, genres, lang, runtime) => (dispatch) => {
+  dispatch(requestAdvancedSearchResults());
+  return tmdbApi.getAdvSearchResults(date, genres, lang, runtime)
+    .then(
+      json => dispatch(recieveAdvancedSearchResults(json))
+    );
+};

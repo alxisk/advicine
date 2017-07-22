@@ -4,6 +4,7 @@ import Header from './header';
 import Search from './search';
 import CurrentMovies from './currentMovies';
 import BestMovies from './bestMovies';
+import AdvancedSearch from './advancedSearch';
 import SearchResults from './searchResults';
 import MoviePage from './moviePage';
 
@@ -14,6 +15,7 @@ const App = () => (
     <Route exact path="/" component={CurrentMovies} />
     <Route path="/search" component={SearchResults} />
     <Route path="/best-movies" component={BestMovies} />
+    <Route path="/advanced-search" component={AdvancedSearch} />
     <Route path="/titles/:title" component={MoviePage} />
   </div>
 );

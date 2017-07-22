@@ -18,7 +18,7 @@ class MoviePage extends Component {
       );
     }
     return (
-      <section className="movie-page">
+      <article className="movie-page">
         <div className="wrap movie-page__wrap">
           <div className="movie-page__poster">
             <img
@@ -50,7 +50,7 @@ class MoviePage extends Component {
             </p>
           </div>
         </div>
-      </section>
+      </article>
     );
   }
 }
