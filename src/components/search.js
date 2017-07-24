@@ -11,12 +11,23 @@ class Search extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const pathname = this.props.location.pathname;
+    const query = (/^\/search\//).test(pathname) ?
+      pathname.replace('/search/', '') : '';
+    if (query) {
+      this.searchInput.value = query;
+      this.props.fetchSearchResults(query);
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const query = this.searchInput.value;
-    if (!query) return;
-    this.props.onSubmit(query);
-    this.props.history.push(`/search/${query}`);
+    if (query) {
+      this.props.fetchSearchResults(query);
+      this.props.history.push(`/search/${query}`);
+    }
   }
 
   render() {
@@ -39,17 +50,20 @@ class Search extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmit: bindActionCreators(fetchSearchResults, dispatch),
+    fetchSearchResults: bindActionCreators(fetchSearchResults, dispatch),
   };
 }
 
 Search.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+  fetchSearchResults: PropTypes.func.isRequired,
   history: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.object,
   ]).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(Search));
