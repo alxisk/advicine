@@ -17,16 +17,20 @@ class MoviePage extends Component {
         <h1>Loading..</h1>
       );
     }
+
+    const screenWidth = document.documentElement.clientWidth;
+    const posterSize = screenWidth < 768 ? 154 : 185;
+
     return (
       <article className="movie-page">
         <div className="wrap movie-page__wrap">
-          <div className="movie-page__poster">
-            <img
-              src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
-              alt={`${movie.title} poster`}
-            />
-          </div>
           <div className="movie-page__description">
+            <div className="movie-page__poster">
+              <img
+                src={`https://image.tmdb.org/t/p/w${posterSize}${movie.poster_path}`}
+                alt={`${movie.title} poster`}
+              />
+            </div>
             <h2 className="movie-page__title">{movie.title}</h2>
             <p className="movie-page__release-date">({parseInt(movie.release_date)})</p>
             <p className="movie-page__overview">{movie.overview}</p>

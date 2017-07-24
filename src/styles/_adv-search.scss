@@ -47,6 +47,29 @@
       flex-basis: 9%;
       padding-top: 23px;
     }
+
+    @media #{$mq-md}, #{$mq-sm} {
+      &:first-child {
+        flex-basis: 35%;
+      }
+
+      &:nth-child(2) {
+        flex-basis: 57%;
+      }
+
+      &:nth-child(3) {
+        flex-basis: 35%;
+      }
+
+      &:nth-child(4) {
+        flex-basis: 35%;
+      }
+
+      &:nth-child(5) {
+        flex-basis: 9%;
+        padding-top: 23px;
+      }
+    }
   }
 
   &__min-max-fieldset {
@@ -96,6 +119,5 @@
 
   &__btn {
     margin: 0 auto;
-    // margin-top: 15px;
   }
 }

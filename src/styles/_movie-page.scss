@@ -7,34 +7,45 @@
   &__wrap {
     display: flex;
     justify-content: space-between;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    flex-wrap: wrap;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 3%;
+    padding-left: 3%;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    @media #{$mq-sm} {
+      padding-bottom: 3px;
+      margin-bottom: 10px;
+    }
   }
 
   &__poster {
-    flex: 0 1 auto;
+    float: left;
+    margin-right: 5%;
   }
 
   &__description {
-    flex: 0 1 70%;
-    padding-left: 25px;
-    padding-right: 25px;
+    flex: 0 1 84%;
+    padding-right: 3%;
+
+    @media #{$mq-sm} {
+      flex-basis: 100%;
+      padding-right: 0;
+    }
   }
 
   &__title {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 26px;
-    line-height: 26px;
+    line-height: 32px;
     letter-spacing: 1px;
   }
 
   &__release-date {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-size: 14px;
     line-height: 14px;
   }
@@ -45,11 +56,27 @@
   }
 
   &__info {
-    flex: 0 1 20%;
+    flex: 0 1 15%;
+
+    @media #{$mq-sm} {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      flex-basis: 100%;
+      padding-top: 25px;
+    }
   }
 
   &__info-item {
     margin-top: 0;
+    width: 100%;
+
+    @media #{$mq-sm} {
+      flex: 0 1 auto;
+      width: auto;
+      margin-right: 3%;
+      margin-left: 3%;
+    }
 
     & > span {
       display: block;
