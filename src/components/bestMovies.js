@@ -109,13 +109,10 @@ function mapDispatchToProps(dispatch) {
 
 BestMovies.propTypes = {
   fetchBestMovies: PropTypes.func.isRequired,
-  bestMovies: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]).isRequired,
+  bestMovies: PropTypes.shape({
+    list: PropTypes.array,
+    isFetching: PropTypes.boolean,
+  }).isRequired,
   pagesLoaded: PropTypes.number.isRequired,
   scrollPosition: PropTypes.number.isRequired,
 };

@@ -78,13 +78,10 @@ function mapDispatchToProps(dispatch) {
 
 CurrentMovies.propTypes = {
   fetchCurrentMovies: PropTypes.func.isRequired,
-  currentMovies: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.array,
-    PropTypes.object,
-  ]).isRequired,
+  currentMovies: PropTypes.shape({
+    upcomingMovies: PropTypes.array,
+    latestTVShows: PropTypes.array,
+  }).isRequired,
 };
 
 CurrentMoviesItem.defaultProps = {

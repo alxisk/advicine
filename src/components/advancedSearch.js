@@ -5,7 +5,6 @@ import Select from 'react-select';
 import PropTypes from 'prop-types';
 import { genreIds, genreList } from '../constants/genres';
 import { fetchAdvancedSearchResults } from '../actions/searchActions';
-import SearchResults from './searchResults';
 
 class AdvancedSearch extends Component {
   constructor() {
@@ -133,7 +132,6 @@ class AdvancedSearch extends Component {
             </div>
           </form>
         </div>
-        <SearchResults advanced />
       </section>
     );
   }

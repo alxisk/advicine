@@ -69,11 +69,11 @@ function mapDispatchToProps(dispatch) {
 
 MoviePage.propTypes = {
   fetchTitleData: PropTypes.func.isRequired,
-  match: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-    PropTypes.object,
-  ]).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      title: PropTypes.string,
+    }),
+  }).isRequired,
   movie: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.number,

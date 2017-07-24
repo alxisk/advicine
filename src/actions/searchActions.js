@@ -4,7 +4,6 @@ import tmdbApi from '../utils/tmdbApi';
 export function requestSearchResults() {
   return {
     type: actionTypes.REQUEST_SEARCH_RESULTS,
-    isFetching: true,
   };
 }
 
@@ -26,7 +25,6 @@ export const fetchSearchResults = query => (dispatch) => {
 export function requestAdvancedSearchResults() {
   return {
     type: actionTypes.REQUEST_ADVANCED_SEARCH_RESULTS,
-    isFetching: true,
   };
 }
 

@@ -4,7 +4,7 @@ const tmdbApi = {
 
   getTitles(query) {
     const searchQuery = encodeURIComponent(query);
-    return fetch(`${this.baseUrl}search/movie?${this.key}&query=${searchQuery}`)
+    return fetch(`${this.baseUrl}search/movie?${this.key}&query=${searchQuery}&language=en-US`)
       .then(response => response.json(),
             error => console.error(error))
       .then(json => json.results);

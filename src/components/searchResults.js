@@ -4,21 +4,22 @@ import PropTypes from 'prop-types';
 import SearchItem from './searchItem';
 
 // eslint-disable-next-line react/prop-types
-const SearchResults = ({ searchResults, advSearchResults, advanced }) => (
-  <section className="search-results">
-    <div className="wrap">
-      <ul className="search-results__list">
-        {advanced ?
-          advSearchResults.length ?
-          advSearchResults.map(item => <SearchItem key={item.id} title={item} />) :
-          <p>nothing found</p> :
-          searchResults.length ?
-          searchResults.map(item => <SearchItem key={item.id} title={item} />) :
-          <p>nothing found</p>}
-      </ul>
-    </div>
-  </section>
-);
+const SearchResults = ({ searchResults, advSearchResults, advanced }) => {
+  const results = advanced ? advSearchResults : searchResults;
+  return (
+    <section className="search-results">
+      <div className="wrap">
+        <ul className="search-results__list">
+          {
+            results.length ?
+            results.map(item => <SearchItem key={item.id} {...item} />) :
+            <p>nothing found</p>
+          }
+        </ul>
+      </div>
+    </section>
+  );
+};
 
 function mapStateToProps(state) {
   return {
