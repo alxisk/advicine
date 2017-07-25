@@ -1,9 +1,12 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
+const babelSettings = JSON.parse(fs.readFileSync(".babelrc"));
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
-  entry: './src/index.js',
+  entry: ['./src/index.js'],
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'main.js',
@@ -68,8 +71,6 @@ const config = {
     ]
   },
 
-  devtool: 'cheap-module-source-map',
-
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Simple todo app',
@@ -77,16 +78,42 @@ const config = {
       template: './src/index.html',
       inject: 'body'
     }),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+      }
+    })
   ],
+};
 
-  devServer: {
+if (process.env.NODE_ENV === 'production') {
+  config.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        screw_ie8: true
+      }
+    })
+  )
+  config.plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'report.html',
+      defaultSizes: 'parsed',
+      openAnalyzer: true,
+      logLevel: 'info'
+    })
+  )
+  babelSettings.plugins.push("transform-react-constant-elements");
+} else {
+  config.devtool = 'cheap-module-source-map';
+  config.devServer = {
     historyApiFallback: true,
     contentBase: path.join(__dirname, "build"),
     compress: true,
     port: 8080,
-    stats: 'minimal'
-  }
+    stats: 'minimal',
+  };
 }
 
 module.exports = config;
