@@ -50,6 +50,7 @@ class BestMovies extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.infiniteScroll);
+    window.removeEventListener('resize', this.onResize);
   }
 
   onResize() {
