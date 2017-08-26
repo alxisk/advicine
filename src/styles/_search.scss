@@ -20,4 +20,22 @@
       border-bottom: 2px solid $main;
     }
   }
+
+  &__input:focus + &__input-icon {
+    display: none !important;
+  }
+
+  &__input-icon {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      content: "\e986";
+      font-family: "icomoon";
+      font-size: 16px;
+      top: -1px;
+      left: -148px;
+      color: $text-dark;
+    }
+  }
 }

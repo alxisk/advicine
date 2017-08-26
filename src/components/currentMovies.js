@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchCurrentMovies } from '../actions/collectionsActions';
+import LoadingIcon from '../assets/icons/loadingIcon';
 
 const CurrentMoviesItem = ({ id, title, name, poster_path }) => {
   const movieTitle = title || name;
@@ -32,7 +33,9 @@ class CurrentMovies extends Component {
     if (!currentMovies.hasOwnProperty('upcomingMovies') ||
         currentMovies.isFetching) {
       return (
-        <h2>loading..</h2>
+        <div className="loading-icon">
+          <LoadingIcon fill="#fff" stroke="#c53211" />
+        </div>
       );
     }
 

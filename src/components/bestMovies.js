@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import ReactTooltip from 'react-tooltip';
 import { fetchBestMovies } from '../actions/collectionsActions';
+import LoadingIcon from '../assets/icons/loadingIcon';
 
 const BestMoviesItem = ({ num, id, title, release_date, vote_average, poster_path }) => (
   <li className="collection__item">
@@ -86,7 +87,9 @@ class BestMovies extends Component {
           </ul>
           }
           {this.props.bestMovies.isFetching &&
-            <div style={{ textAlign: 'center' }}>LOADING...</div>
+            <div className="loading-icon" style={{ 'padding-top': '10px' }}>
+              <LoadingIcon fill="#fff" stroke="#c53211" />
+            </div>
           }
         </div>
       </section>

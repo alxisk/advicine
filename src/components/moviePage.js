@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { fetchTitleData } from '../actions/titlesActions';
+import LoadingIcon from '../assets/icons/loadingIcon';
 
 class MoviePage extends Component {
   componentDidMount() {
@@ -14,7 +15,9 @@ class MoviePage extends Component {
     const movie = this.props.movie;
     if (!movie.hasOwnProperty('isFetching') || movie.isFetching) {
       return (
-        <h1>Loading..</h1>
+        <div className="loading-icon">
+          <LoadingIcon fill="#fff" stroke="#c53211" />
+        </div>
       );
     }
 

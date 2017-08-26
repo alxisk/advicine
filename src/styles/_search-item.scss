@@ -32,9 +32,11 @@
 
     &:after {
       position: absolute;
-      content: "not available";
-      top: 100px;
-      left: 32px;
+      content: "\e90d";
+      top: 86px;
+      left: 52px;
+      font-family: "icomoon";
+      font-size: 50px;
     }
   }
 
