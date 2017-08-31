@@ -17,10 +17,10 @@ export function recieveTitleData(id, details, videos) {
   };
 }
 
-export const fetchTitleData = titleId => (dispatch) => {
+export const fetchTitleData = (titleId, tv) => (dispatch) => {
   dispatch(requestTitleData(titleId));
-  const details = tmdbApi.getDetails(titleId);
-  const videos = tmdbApi.getVideos(titleId);
+  const details = tmdbApi.getDetails(titleId, tv);
+  const videos = tmdbApi.getVideos(titleId, tv);
   return Promise.all([details, videos])
     .then(
       responses => dispatch(recieveTitleData(titleId, ...responses))

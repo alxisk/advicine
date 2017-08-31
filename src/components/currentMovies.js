@@ -11,7 +11,7 @@ const CurrentMoviesItem = ({ id, title, name, poster_path }) => {
   return (
     <li className="current-movies__item">
       <Link
-        to={`/titles/${id}-${movieTitle}`}
+        to={`/titles/${name ? 'tv/' : ''}${id}-${movieTitle}`}
         className="current-movies__link"
         style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w342${poster_path})` }} // eslint-disable-line camelcase
       >

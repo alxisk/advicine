@@ -17,7 +17,7 @@ const App = () => (
     <Route path="/advanced-search" component={AdvancedSearch} />
     <Route path="/advanced-search" render={() => <SearchResults advanced />} />
     <Route path="/best-movies" component={BestMovies} />
-    <Route path="/titles/:title" component={MoviePage} />
+    <Route path="/titles/:tv?/:title" component={MoviePage} />
   </div>
 );
 

@@ -8,7 +8,11 @@ import LoadingIcon from '../assets/icons/loadingIcon';
 class MoviePage extends Component {
   componentDidMount() {
     const titleId = parseInt(this.props.match.params.title);
-    this.props.fetchTitleData(titleId);
+    if (this.props.match.params.tv) {
+      this.props.fetchTitleData(titleId, true);
+    } else {
+      this.props.fetchTitleData(titleId);
+    }
   }
 
   render() {
@@ -23,6 +27,64 @@ class MoviePage extends Component {
 
     const screenWidth = document.documentElement.clientWidth;
     const posterSize = screenWidth < 768 ? 154 : 185;
+    let date;
+    let runtime;
+    let budget;
+    let revenue;
+    let episodes;
+    let seasons;
+
+    if (this.props.match.params.tv) {
+      date = (
+        <p className="movie-page__release-date">
+          ({parseInt(movie.first_air_date)} - {parseInt(movie.last_air_date)})
+        </p>
+      );
+      runtime = (
+        <p className="movie-page__info-item">
+          <span>Episode runtime</span>
+          {`${movie.episode_run_time instanceof Array ?
+              movie.episode_run_time.join('/') :
+              movie.episode_run_time}m`}
+        </p>
+      );
+      episodes = (
+        <p className="movie-page__info-item">
+          <span>Episodes</span>
+          {movie.number_of_episodes}
+        </p>
+      );
+      seasons = (
+        <p className="movie-page__info-item">
+          <span>Seasons</span>
+          {movie.number_of_seasons}
+        </p>
+      );
+    } else {
+      date = (
+        <p className="movie-page__release-date">
+          ({parseInt(movie.release_date)})
+        </p>
+      );
+      runtime = (
+        <p className="movie-page__info-item">
+          <span>Runtime</span>
+          {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}
+        </p>
+      );
+      budget = (
+        <p className="movie-page__info-item">
+          <span>Budget</span>
+          {movie.budget}$
+        </p>
+      );
+      revenue = (
+        <p className="movie-page__info-item">
+          <span>Revenue</span>
+          {movie.revenue}$
+        </p>
+      );
+    }
 
     return (
       <article className="movie-page">
@@ -34,27 +96,20 @@ class MoviePage extends Component {
                 alt={`${movie.title} poster`}
               />
             </div>
-            <h2 className="movie-page__title">{movie.title}</h2>
-            <p className="movie-page__release-date">({parseInt(movie.release_date)})</p>
+            <h2 className="movie-page__title">{movie.title || movie.name}</h2>
+            {date}
             <p className="movie-page__overview">{movie.overview}</p>
           </div>
           <div className="movie-page__info">
-            <p className="movie-page__info-item">
-              <span>Runtime</span>
-              {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}
-            </p>
+            {runtime}
             <p className="movie-page__info-item">
               <span>Original language</span>
               {movie.original_language}
             </p>
-            <p className="movie-page__info-item">
-              <span>Budget</span>
-              {movie.budget}$
-            </p>
-            <p className="movie-page__info-item">
-              <span>Revenue</span>
-              {movie.revenue}$
-            </p>
+            {budget}
+            {revenue}
+            {episodes}
+            {seasons}
           </div>
         </div>
       </article>
@@ -79,6 +134,7 @@ MoviePage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       title: PropTypes.string,
+      tv: PropTypes.string,
     }),
   }).isRequired,
   movie: PropTypes.oneOfType([

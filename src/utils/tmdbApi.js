@@ -21,17 +21,30 @@ const tmdbApi = {
       .then(json => json.results);
   },
 
-  getDetails(titleId) {
-    return fetch(`${this.baseUrl}movie/${titleId}?${this.key}&language=en-US`)
-      .then(response => response.json(),
-            error => console.error(error));
+  getDetails(titleId, tv) {
+    if (tv) {
+      return fetch(`${this.baseUrl}tv/${titleId}?${this.key}&language=en-US`)
+        .then(response => response.json(),
+              error => console.error(error));
+    } else {
+      return fetch(`${this.baseUrl}movie/${titleId}?${this.key}&language=en-US`)
+        .then(response => response.json(),
+              error => console.error(error));
+    }
   },
 
-  getVideos(titleId) {
-    return fetch(`${this.baseUrl}movie/${titleId}/videos?${this.key}&language=en-US`)
-      .then(response => response.json(),
-            error => console.error(error))
-      .then(response => response.results);
+  getVideos(titleId, tv) {
+    if (tv) {
+      return fetch(`${this.baseUrl}tv/${titleId}/videos?${this.key}&language=en-US`)
+        .then(response => response.json(),
+              error => console.error(error))
+        .then(response => response.results);
+    } else {
+      return fetch(`${this.baseUrl}movie/${titleId}/videos?${this.key}&language=en-US`)
+        .then(response => response.json(),
+              error => console.error(error))
+        .then(response => response.results);
+    }
   },
 
   getUpcoming() {
