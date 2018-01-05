@@ -25,12 +25,6 @@ const config = {
               presets: ['react', 'es2015', 'env'],
               plugins: [require('babel-plugin-transform-object-rest-spread')]
             }
-          },
-          {
-            loader: 'eslint-loader',
-            options: {
-              emitWarning: true
-            }
           }
         ]
       },
