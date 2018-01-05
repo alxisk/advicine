@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants/actionTypes';
+import * as actionTypes from '../constants/actionTypes'
 
 export default function titles(state = {}, action) {
   switch (action.type) {
@@ -6,7 +6,7 @@ export default function titles(state = {}, action) {
       return {
         ...state,
         [action.id]: { isFetching: true },
-      };
+      }
     case actionTypes.RECIEVE_TITLE_DATA:
       return {
         ...state,
@@ -15,8 +15,8 @@ export default function titles(state = {}, action) {
           isFetching: false,
           videos: action.videos,
         },
-      };
+      }
     default:
-      return state;
+      return state
   }
 }

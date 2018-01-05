@@ -1,89 +1,87 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { fetchTitleData } from '../actions/titlesActions';
-import LoadingIcon from '../assets/icons/loadingIcon';
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { fetchTitleData } from '../actions/titlesActions'
+import LoadingIcon from '../assets/icons/loadingIcon'
 
 class MoviePage extends Component {
   componentDidMount() {
-    const titleId = parseInt(this.props.match.params.title);
+    const titleId = parseInt(this.props.match.params.title)
     if (this.props.match.params.tv) {
-      this.props.fetchTitleData(titleId, true);
+      this.props.fetchTitleData(titleId, true)
     } else {
-      this.props.fetchTitleData(titleId);
+      this.props.fetchTitleData(titleId)
     }
   }
 
   render() {
-    const movie = this.props.movie;
+    const movie = this.props.movie
     if (!movie.hasOwnProperty('isFetching') || movie.isFetching) {
       return (
         <div className="loading-icon">
           <LoadingIcon fill="#fff" stroke="#c53211" />
         </div>
-      );
+      )
     }
 
-    const screenWidth = document.documentElement.clientWidth;
-    const posterSize = screenWidth < 768 ? 154 : 185;
-    let date;
-    let runtime;
-    let budget;
-    let revenue;
-    let episodes;
-    let seasons;
+    const screenWidth = document.documentElement.clientWidth
+    const posterSize = screenWidth < 768 ? 154 : 185
+    let date
+    let runtime
+    let budget
+    let revenue
+    let episodes
+    let seasons
 
     if (this.props.match.params.tv) {
       date = (
         <p className="movie-page__release-date">
           ({parseInt(movie.first_air_date)} - {parseInt(movie.last_air_date)})
         </p>
-      );
+      )
       runtime = (
         <p className="movie-page__info-item">
           <span>Episode runtime</span>
-          {`${movie.episode_run_time instanceof Array ?
-              movie.episode_run_time.join('/') :
-              movie.episode_run_time}m`}
+          {`${
+            movie.episode_run_time instanceof Array
+              ? movie.episode_run_time.join('/')
+              : movie.episode_run_time
+          }m`}
         </p>
-      );
+      )
       episodes = (
         <p className="movie-page__info-item">
           <span>Episodes</span>
           {movie.number_of_episodes}
         </p>
-      );
+      )
       seasons = (
         <p className="movie-page__info-item">
           <span>Seasons</span>
           {movie.number_of_seasons}
         </p>
-      );
+      )
     } else {
-      date = (
-        <p className="movie-page__release-date">
-          ({parseInt(movie.release_date)})
-        </p>
-      );
+      date = <p className="movie-page__release-date">({parseInt(movie.release_date)})</p>
       runtime = (
         <p className="movie-page__info-item">
           <span>Runtime</span>
           {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}
         </p>
-      );
+      )
       budget = (
         <p className="movie-page__info-item">
           <span>Budget</span>
           {movie.budget}$
         </p>
-      );
+      )
       revenue = (
         <p className="movie-page__info-item">
           <span>Revenue</span>
           {movie.revenue}$
         </p>
-      );
+      )
     }
 
     return (
@@ -113,20 +111,20 @@ class MoviePage extends Component {
           </div>
         </div>
       </article>
-    );
+    )
   }
 }
 
 function mapStateToProps(state, ownProps) {
   return {
     movie: state.titles[parseInt(ownProps.match.params.title)] || {},
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     fetchTitleData: bindActionCreators(fetchTitleData, dispatch),
-  };
+  }
 }
 
 MoviePage.propTypes = {
@@ -144,6 +142,6 @@ MoviePage.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]).isRequired,
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage)

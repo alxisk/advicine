@@ -1,5 +1,5 @@
-import differenceBy from 'lodash/differenceBy';
-import * as actionTypes from '../constants/actionTypes';
+import differenceBy from 'lodash/differenceBy'
+import * as actionTypes from '../constants/actionTypes'
 
 const initialState = {
   currentMovies: {},
@@ -9,7 +9,7 @@ const initialState = {
     scrollPosition: 0,
     list: [],
   },
-};
+}
 
 export default function collections(state = initialState, action) {
   switch (action.type) {
@@ -19,7 +19,7 @@ export default function collections(state = initialState, action) {
         currentMovies: {
           isFetching: true,
         },
-      };
+      }
     case actionTypes.RECIEVE_CURRENT_MOVIES:
       return {
         ...state,
@@ -28,7 +28,7 @@ export default function collections(state = initialState, action) {
           latestTVShows: action.latestTVShows,
           upcomingMovies: action.upcomingMovies,
         },
-      };
+      }
     case actionTypes.REQUEST_BEST_MOVIES:
       return {
         ...state,
@@ -38,7 +38,7 @@ export default function collections(state = initialState, action) {
           scrollPosition: state.bestMovies.scrollPosition,
           list: state.bestMovies.list,
         },
-      };
+      }
     case actionTypes.RECIEVE_BEST_MOVIES:
       return {
         ...state,
@@ -51,8 +51,8 @@ export default function collections(state = initialState, action) {
             ...differenceBy(action.bestMovies, state.bestMovies.list, 'id'),
           ],
         },
-      };
+      }
     default:
-      return state;
+      return state
   }
 }

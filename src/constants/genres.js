@@ -18,6 +18,6 @@ export const genreIds = {
   Thriller: 53,
   War: 10752,
   Western: 37,
-};
+}
 
-export const genreList = Object.keys(genreIds);
+export const genreList = Object.keys(genreIds)
