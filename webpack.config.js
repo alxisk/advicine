@@ -94,7 +94,7 @@ if (process.env.NODE_ENV === 'production') {
       analyzerMode: 'static',
       reportFilename: 'report.html',
       defaultSizes: 'parsed',
-      openAnalyzer: true,
+      openAnalyzer: false,
       logLevel: 'info'
     })
   )
