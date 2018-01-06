@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { fetchTitleData } from '../actions/titlesActions'
 import LoadingIcon from '../assets/icons/loadingIcon'
+import Video from './video'
 
 class MoviePage extends Component {
   componentDidMount() {
@@ -15,8 +16,25 @@ class MoviePage extends Component {
     }
   }
 
+  renderVideo() {
+    const { movie: { videos } } = this.props
+
+    if (!videos || !videos.length) {
+      return null
+    }
+
+    const video = videos[0]
+
+    return (
+      <div className="movie-page__video">
+        <Video {...video} videoKey={video.key} />
+      </div>
+    )
+  }
+
   render() {
-    const movie = this.props.movie
+    const { movie } = this.props
+
     if (!movie.hasOwnProperty('isFetching') || movie.isFetching) {
       return (
         <div className="loading-icon">
@@ -109,6 +127,7 @@ class MoviePage extends Component {
             {episodes}
             {seasons}
           </div>
+          {this.renderVideo()}
         </div>
       </article>
     )

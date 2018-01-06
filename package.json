@@ -8,7 +8,8 @@
     "start": "webpack-dev-server --progress --hot",
     "test": "./node_modules/.bin/mocha --require babel-register ./test/setup.js --reporter spec src/**/*.spec.js",
     "format": "prettier --write 'src/*.js' 'src/**/*.js'",
-    "lint": "eslint 'src/*.js' 'src/**/*.js' || true"
+    "lint": "eslint 'src/*.js' 'src/**/*.js' || true",
+    "gh-pages": "git subtree push --prefix build origin gh-pages"
   },
   "repository": {
     "type": "git",
