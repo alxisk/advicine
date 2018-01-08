@@ -3,10 +3,10 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import throttle from 'lodash/throttle'
 import ReactTooltip from 'react-tooltip'
 import { fetchBestMovies } from '../actions/collectionsActions'
 import LoadingIcon from '../assets/icons/loadingIcon'
+import withInfiniteScroll from '../utils/withInfiniteScroll'
 
 const BestMoviesItem = ({ num, id, title, release_date, vote_average, poster_path }) => (
   <li className="collection__item">
@@ -31,42 +31,8 @@ const BestMoviesItem = ({ num, id, title, release_date, vote_average, poster_pat
 )
 
 class BestMovies extends Component {
-  constructor(props) {
-    super(props)
-    this.infiniteScroll = this.infiniteScroll.bind(this)
-    this.onResize = this.onResize.bind(this)
-    this.infiniteScroll = throttle(this.infiniteScroll, 200)
-    this.onResize = throttle(this.onResize, 300, { leading: false })
-  }
-
   componentDidMount() {
     this.props.fetchBestMovies(1, 0)
-    window.addEventListener('scroll', this.infiniteScroll)
-    window.addEventListener('resize', this.onResize)
-  }
-
-  componentDidUpdate() {
-    window.scrollTo(0, this.props.scrollPosition)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.infiniteScroll)
-    window.removeEventListener('resize', this.onResize)
-  }
-
-  onResize() {
-    this.forceUpdate()
-  }
-
-  infiniteScroll() {
-    const pageHeight = document.documentElement.scrollHeight
-    const pageScrolled = window.pageYOffset
-    const screenHeight = document.documentElement.clientHeight
-    const needMorePages = pageHeight - pageScrolled - screenHeight - 200 < 0
-
-    if (needMorePages) {
-      this.props.fetchBestMovies(this.props.pagesLoaded + 1, window.pageYOffset)
-    }
   }
 
   render() {
@@ -83,7 +49,7 @@ class BestMovies extends Component {
             </ul>
           )}
           {this.props.bestMovies.isFetching && (
-            <div className="loading-icon" style={{ 'padding-top': '10px' }}>
+            <div className="loading-icon" style={{ paddingTop: '10px' }}>
               <LoadingIcon fill="#fff" stroke="#c53211" />
             </div>
           )}
@@ -126,4 +92,8 @@ BestMoviesItem.propTypes = {
   poster_path: PropTypes.string.isRequired,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BestMovies)
+const BestMoviesWithInfiniteScroll = withInfiniteScroll(function() {
+  this.props.fetchBestMovies(this.props.pagesLoaded + 1, window.pageYOffset)
+})(BestMovies)
+
+export default connect(mapStateToProps, mapDispatchToProps)(BestMoviesWithInfiniteScroll)
